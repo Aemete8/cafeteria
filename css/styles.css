@@ -1,0 +1,343 @@
+/* ===== Variables ===== */
+:root {
+    --espresso: #2b1d16;
+    --walnut: #4a3226;
+    --brass: #b58a3e;
+    --brass-dark: #8c6620;
+    --oat: #efe5d6;
+    --linen: #f9f5ee;
+    --font-title: "Fraunces", Georgia, "Times New Roman", serif;
+    --font-body: "Jost", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ===== Base (mobile first) ===== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4.5rem;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--espresso);
+    background: var(--linen);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-title);
+    line-height: 1.15;
+    margin: 0 0 0.75rem;
+}
+h1 {
+    font-size: 2.1rem;
+}
+h2 {
+    font-size: 1.75rem;
+}
+h3 {
+    font-size: 1.25rem;
+}
+p {
+    margin: 0 0 1rem;
+    max-width: 60ch;
+}
+
+a {
+    color: inherit;
+}
+:focus-visible {
+    outline: 3px solid var(--brass);
+    outline-offset: 3px;
+}
+
+.container {
+    width: 100%;
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.6rem;
+    background: var(--brass);
+    color: var(--espresso);
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 2rem;
+    transition:
+        background 0.2s,
+        color 0.2s;
+}
+.btn:hover {
+    background: var(--espresso);
+    color: var(--linen);
+}
+
+/* ===== Encabezado y navegación (menú hamburguesa) ===== */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--espresso);
+    color: var(--linen);
+}
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 4rem;
+}
+.brand {
+    font-family: var(--font-title);
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0.6rem;
+    background: none;
+    border: 0;
+    cursor: pointer;
+}
+.menu-toggle .bar {
+    display: block;
+    height: 2px;
+    background: var(--linen);
+    transition:
+        transform 0.25s,
+        opacity 0.25s;
+}
+.menu-toggle[aria-expanded="true"] .bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.menu-toggle[aria-expanded="true"] .bar:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle[aria-expanded="true"] .bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+.main-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: none;
+    background: var(--walnut);
+}
+.main-nav.open {
+    display: block;
+}
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem 0;
+}
+.main-nav a {
+    display: block;
+    padding: 0.9rem 1.25rem;
+    text-decoration: none;
+}
+.main-nav a:hover {
+    background: var(--espresso);
+    color: var(--brass);
+}
+
+/* ===== Hero ===== */
+.hero {
+    background: var(--espresso);
+    color: var(--linen);
+    padding: 2.5rem 0 3rem;
+}
+.hero-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.hero-img {
+    width: 100%;
+    max-width: 20rem;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+
+/* ===== Menú de productos (CSS Grid) ===== */
+.menu {
+    padding: 3.5rem 0;
+}
+.section-intro {
+    color: var(--walnut);
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+.card {
+    background: var(--oat);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s;
+}
+.card:hover {
+    transform: translateY(-4px);
+}
+.card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+.card-body {
+    padding: 1.25rem;
+}
+.card-body p {
+    margin-bottom: 0.5rem;
+}
+.price {
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--brass-dark);
+}
+
+/* ===== Contacto (Flexbox) ===== */
+.contact {
+    background: var(--oat);
+    padding: 3.5rem 0;
+}
+.contact-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.contact-info {
+    font-style: normal;
+}
+
+/* ===== Pie de página ===== */
+.site-footer {
+    background: var(--espresso);
+    color: var(--linen);
+    padding: 1.5rem 0;
+    font-size: 0.9rem;
+}
+.site-footer p {
+    margin: 0;
+    max-width: none;
+}
+
+/* ===== Tableta (≥ 768px) ===== */
+@media (min-width: 768px) {
+    h1 {
+        font-size: 2.8rem;
+    }
+    h2 {
+        font-size: 2.1rem;
+    }
+
+    .hero {
+        padding: 4rem 0;
+    }
+    .hero-inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .hero-text {
+        flex: 1 1 55%;
+    }
+    .hero-img {
+        flex: 0 1 18rem;
+        margin: 0;
+    }
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-inner {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    .contact-inner > * {
+        flex: 1;
+    }
+}
+
+/* ===== Computador (≥ 1024px) ===== */
+@media (min-width: 1024px) {
+    h1 {
+        font-size: 3.4rem;
+    }
+
+    /* El menú hamburguesa se reemplaza por una barra horizontal */
+    .menu-toggle {
+        display: none;
+    }
+    .main-nav {
+        position: static;
+        display: block;
+        background: none;
+    }
+    .main-nav ul {
+        display: flex;
+        gap: 1.5rem;
+        padding: 0;
+    }
+    .main-nav a {
+        padding: 0.5rem 0.25rem;
+    }
+    .main-nav a:hover {
+        background: none;
+    }
+
+    .hero {
+        padding: 5.5rem 0;
+    }
+    .hero-img {
+        flex-basis: 24rem;
+    }
+
+    .cards {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* ===== Accesibilidad: respetar reducción de movimiento ===== */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    * {
+        transition: none !important;
+    }
+}
